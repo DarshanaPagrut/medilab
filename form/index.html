@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Ensures compatibility with older browsers -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Form</title>
+    <title>Contact Form</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             padding: 20px;
+            margin: 0;
         }
         .form-container {
             background-color: #fff;
@@ -17,24 +19,36 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             margin: 0 auto;
+            box-sizing: border-box;
         }
-        input, textarea {
+        input, textarea, button {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
+            box-sizing: border-box; /* Ensures consistent box sizing */
+        }
+        input:focus, textarea:focus {
+            border-color: #4CAF50; /* Highlight on focus */
+            outline: none;
         }
         button {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
             cursor: pointer;
+            border: none;
         }
         button:hover {
             background-color: #45a049;
+        }
+        @media (max-width: 500px) {
+            body {
+                padding: 10px;
+            }
+            .form-container {
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -44,13 +58,13 @@
     <h2>Contact Form</h2>
     <form action="submit_form.php" method="POST">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" required aria-label="Enter your name">
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" required aria-label="Enter your email">
 
         <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
+        <textarea id="message" name="message" rows="4" required aria-label="Enter your message"></textarea>
 
         <button type="submit">Submit</button>
     </form>
